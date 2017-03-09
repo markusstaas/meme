@@ -31,7 +31,7 @@
                                     <constraint firstAttribute="height" constant="44" id="NEo-7a-sYB"/>
                                 </constraints>
                                 <items>
-                                    <barButtonItem title="Albums" id="lR3-hU-yXg">
+                                    <barButtonItem title="Album" id="lR3-hU-yXg">
                                         <connections>
                                             <action selector="pickAnImage:" destination="BYZ-38-t0r" id="NMM-Bf-b0f"/>
                                         </connections>
@@ -44,8 +44,14 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="iRG-mC-jqG" userLabel="Top Field">
-                                <rect key="frame" x="26" y="50" width="323" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="iRG-mC-jqG" userLabel="Top Field">
+                                <rect key="frame" x="26" y="50" width="323" height="19"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="3Ea-BM-mLD" userLabel="Bottom Field">
+                                <rect key="frame" x="26" y="574" width="323" height="19"/>
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
@@ -54,18 +60,23 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="gAm-VU-R7a" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="2cU-Qm-LjO"/>
+                            <constraint firstItem="3Ea-BM-mLD" firstAttribute="centerX" secondItem="iRG-mC-jqG" secondAttribute="centerX" id="DLi-wC-m2c"/>
                             <constraint firstItem="hrK-QN-sWL" firstAttribute="top" secondItem="gAm-VU-R7a" secondAttribute="bottom" id="Ege-xX-7JX"/>
                             <constraint firstAttribute="trailing" secondItem="gAm-VU-R7a" secondAttribute="trailing" id="GPp-Z4-0qA"/>
                             <constraint firstItem="iRG-mC-jqG" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="30" id="GoY-gQ-A1o"/>
+                            <constraint firstItem="hrK-QN-sWL" firstAttribute="top" secondItem="3Ea-BM-mLD" secondAttribute="bottom" constant="30" id="NOa-zN-Y88"/>
                             <constraint firstAttribute="trailing" secondItem="hrK-QN-sWL" secondAttribute="trailing" id="OfK-iB-D2Z"/>
                             <constraint firstAttribute="trailingMargin" secondItem="iRG-mC-jqG" secondAttribute="trailing" constant="10" id="c2K-Zl-Fu8"/>
                             <constraint firstItem="hrK-QN-sWL" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" id="ebB-Tx-e6e"/>
                             <constraint firstAttribute="bottom" secondItem="hrK-QN-sWL" secondAttribute="bottom" id="fSi-3g-mHN"/>
                             <constraint firstItem="iRG-mC-jqG" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" constant="10" id="jJ4-LC-1dE"/>
+                            <constraint firstItem="3Ea-BM-mLD" firstAttribute="leading" secondItem="iRG-mC-jqG" secondAttribute="leading" id="rwQ-9Q-6rI"/>
+                            <constraint firstItem="3Ea-BM-mLD" firstAttribute="trailing" secondItem="iRG-mC-jqG" secondAttribute="trailing" id="uWd-Ka-qyG"/>
                             <constraint firstItem="gAm-VU-R7a" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="10" id="w3V-6z-1wM"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="bottomField" destination="3Ea-BM-mLD" id="zKg-pU-0Jx"/>
                         <outlet property="cameraButton" destination="py4-Dv-Apo" id="TS9-BT-OMo"/>
                         <outlet property="pickedImage" destination="gAm-VU-R7a" id="Y22-wA-oCb"/>
                         <outlet property="topField" destination="iRG-mC-jqG" id="7Ka-Xr-vMu"/>
