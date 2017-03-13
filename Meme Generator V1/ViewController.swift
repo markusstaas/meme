@@ -29,22 +29,28 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         NSStrokeWidthAttributeName: -5.0
     ]
     
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
         subscribeToKeyboardNotifications()
+        
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.topField.delegate = self
-        topField.defaultTextAttributes = memeTextAttributes
-        topField.text = "TOP"
-        topField.textAlignment = .center
-        self.bottomField.delegate = self
-        bottomField.defaultTextAttributes = memeTextAttributes
-        bottomField.text = "BOTTOM"
-        bottomField.textAlignment = .center
+        createTextFields(textField: topField, defaultText: "TOP")
+        createTextFields(textField: bottomField, defaultText: "BOTTOM")
         
+    }
+    
+    func createTextFields(textField: UITextField, defaultText: String){
+        textField.delegate = self
+        textField.defaultTextAttributes = memeTextAttributes
+        textField.text = defaultText
+        textField.textAlignment = .center
     }
     
     
@@ -62,16 +68,17 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     //MARK: Choose image
     @IBAction func pickAnImage(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
-    }
+       presentImagePicker(chosenSource: .photoLibrary)
+        }
     
     @IBAction func shootAnImage(_ sender: Any) {
+       presentImagePicker(chosenSource: .camera)
+        }
+    
+    func presentImagePicker(chosenSource: UIImagePickerControllerSourceType){
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
-        imagePicker.sourceType = .camera
+        imagePicker.sourceType = chosenSource
         present(imagePicker, animated: true, completion: nil)
     }
     
@@ -104,7 +111,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             bottomField.resignFirstResponder()
         }
         
-        return true;
+        return true
         
     }
     
