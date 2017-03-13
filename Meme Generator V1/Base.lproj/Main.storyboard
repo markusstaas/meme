@@ -61,7 +61,11 @@
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Meme Generator" id="Rzz-Z4-d5I">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="KHX-ZU-yN5"/>
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="KHX-ZU-yN5" userLabel="Share">
+                                            <connections>
+                                                <action selector="shareButton:" destination="BYZ-38-t0r" id="lwz-ZQ-VyR"/>
+                                            </connections>
+                                        </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Cancel" id="X4L-5p-Ni1"/>
                                     </navigationItem>
                                 </items>

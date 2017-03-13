@@ -15,6 +15,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topField: UITextField!
     @IBOutlet weak var bottomField: UITextField!
     
+    var memedImage: UIImage!
     
 
     //MARK: Set text attributes
@@ -40,6 +41,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomField.defaultTextAttributes = memeTextAttributes
         bottomField.text = "BOTTOM"
         bottomField.textAlignment = .center
+        
+        //self.navigationController?.setNavigationBarHidden(true, animated: false)
+        
+ 
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -126,12 +131,21 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
  //MARK: Create MEME Object
     
+    struct Meme{
+        var topText: String?
+        var bottomText: String?
+        var originalImage: UIImage?
+        var memedImage: UIImage!
+    }
+    
     func save() {
         // Create the meme
         let meme = Meme(topText: topField.text!, bottomText: bottomField.text!, originalImage: pickedImage.image!, memedImage: memedImage)
     }
     
     func generateMemedImage() -> UIImage {
+        // TODO: Hide toolbar and navbar
+        
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -139,8 +153,29 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
+        // TODO: Hide toolbar and navbar
+        
         return memedImage
     }
+    
+    @IBAction func shareButton(_ sender: Any) {
+        
+        self.memedImage = generateMemedImage()
+        let shareMeme = UIActivityViewController(activityItems: [self.memedImage], applicationActivities: nil)
+        
+        // Save image to shared
+        shareMeme.completionWithItemsHandler = {
+            activity, completed, items, error in
+            if completed {
+                self.save()
+                self.dismiss(animated: true, completion: nil)
+            }
+        }
+        
+        self.present(shareMeme, animated: true, completion: nil)
+        
+    }
+    
     
     
    }
