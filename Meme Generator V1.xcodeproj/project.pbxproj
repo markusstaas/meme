@@ -13,6 +13,7 @@
 		2883448A1E6D406C00EEBA96 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 288344881E6D406C00EEBA96 /* Main.storyboard */; };
 		2883448C1E6D406C00EEBA96 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2883448B1E6D406C00EEBA96 /* Assets.xcassets */; };
 		2883448F1E6D406C00EEBA96 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2883448D1E6D406C00EEBA96 /* LaunchScreen.storyboard */; };
+		288A57AD1E767BC300973C6B /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 288A57AC1E767BC300973C6B /* impact.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2883448B1E6D406C00EEBA96 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2883448E1E6D406C00EEBA96 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		288344901E6D406C00EEBA96 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		288A57AC1E767BC300973C6B /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; name = impact.ttf; path = ../impact.ttf; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +58,7 @@
 		288344831E6D406C00EEBA96 /* Meme Generator V1 */ = {
 			isa = PBXGroup;
 			children = (
+				288A57AC1E767BC300973C6B /* impact.ttf */,
 				288344841E6D406C00EEBA96 /* AppDelegate.swift */,
 				288344861E6D406C00EEBA96 /* ViewController.swift */,
 				288344881E6D406C00EEBA96 /* Main.storyboard */,
@@ -127,6 +130,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				288A57AD1E767BC300973C6B /* impact.ttf in Resources */,
 				2883448F1E6D406C00EEBA96 /* LaunchScreen.storyboard in Resources */,
 				2883448C1E6D406C00EEBA96 /* Assets.xcassets in Resources */,
 				2883448A1E6D406C00EEBA96 /* Main.storyboard in Resources */,
