@@ -14,6 +14,9 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topField: UITextField!
     @IBOutlet weak var bottomField: UITextField!
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var toolBar: UIToolbar!
+    
     
     var memedImage: UIImage!
     
@@ -42,15 +45,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomField.text = "BOTTOM"
         bottomField.textAlignment = .center
         
-        //self.navigationController?.setNavigationBarHidden(true, animated: false)
-        
- 
     }
+    
+    
     
     override func viewWillDisappear(_ animated: Bool) {
        unsubscribeFromKeyboardNotifications()
     }
     
+    @IBAction func cancelButtonPressed(_ sender: Any) {
+        pickedImage.image = nil
+        topField.text = "TOP"
+        bottomField.text = "BOTTOM"
+    }
    
     
     //MARK: Choose image
@@ -115,11 +122,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func keyboardWillShow(_ notification:Notification) {
         if bottomField.isFirstResponder{
             self.view.frame.origin.y =  getKeyboardHeight(notification) * -1
+            pickedImage.contentMode = .scaleAspectFill
         }
     }
     
     func keyboardWillHide(){
         view.frame.origin.y = 0
+        pickedImage.contentMode = .scaleAspectFit
     }
     
     
@@ -144,8 +153,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
     
     func generateMemedImage() -> UIImage {
-        // TODO: Hide toolbar and navbar
-        
+        navBar.isHidden = true
+        toolBar.isHidden = true
         
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
@@ -153,7 +162,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        // TODO: Hide toolbar and navbar
+        navBar.isHidden = false
+        toolBar.isHidden = false
         
         return memedImage
     }
